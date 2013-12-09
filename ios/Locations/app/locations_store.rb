@@ -37,8 +37,6 @@ class LocationsStore
 
   def initialize
     # Create the model from the momd file, which is the compiled version of the xcdatamodeld
-#    model_url = NSBundle.mainBundle.URLForResource('Locations_Xcode', withExtension:'momd')
-#    model = NSManagedObjectModel.alloc.initWithContentsOfURL(model_url)
     model = NSManagedObjectModel.mergedModelFromBundles([NSBundle.mainBundle]).mutableCopy
 
     store = NSPersistentStoreCoordinator.alloc.initWithManagedObjectModel(model)

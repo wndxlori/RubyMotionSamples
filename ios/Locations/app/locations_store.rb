@@ -37,8 +37,9 @@ class LocationsStore
 
   def initialize
     # Create the model programmatically. Our model has only one entity, the Location class, and the data will be stored in a SQLite database, inside the application's Documents folder.
-    model = NSManagedObjectModel.alloc.init
-    model.entities = [Location.entity]
+    model = NSManagedObjectModel.mergedModelFromBundles([
+                                   NSBundle.mainBundle
+                                 ]).mutableCopy
 
     store = NSPersistentStoreCoordinator.alloc.initWithManagedObjectModel(model)
     store_url = NSURL.fileURLWithPath(File.join(NSHomeDirectory(), 'Documents', 'Locations.sqlite'))
